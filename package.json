@@ -6,9 +6,6 @@
   "files": [
     "dist"
   ],
-  "scripts": {
-    "test": "grunt test-fast"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/gejgalis/izi-js.git"
