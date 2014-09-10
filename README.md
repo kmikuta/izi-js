@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/gejgalis/izi-js.svg?branch=master)](https://travis-ci.org/gejgalis/izi-js)
+
 What is izi-js?
 ===============
 
