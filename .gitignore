@@ -6,6 +6,7 @@
 pids
 *.pid
 *.seed
+*.log
 
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
