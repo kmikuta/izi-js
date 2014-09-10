@@ -3506,6 +3506,22 @@ Izi.isDebug = true;
         };
     };
 }(Izi);
+/**
+ * @requires indexOf.js
+ */
+!function (module) {
+    /**
+     * @member Izi.utils
+     * @method
+     * @private
+     * @param {Array} array
+     * @param {*} item
+     * @return {Boolean}
+     */
+    module.utils.arrayContains = function (array, item) {
+        return module.utils.indexOf(array, item) !== -1;
+    };
+}(Izi);
 !function (module) {
     /**
      * @param {String} classString
@@ -6507,6 +6523,7 @@ Izi.isDebug = true;
  * @requires queue/register.js
  * @requires utils/typeOf.js
  * @requires utils/forEach.js
+ * @requires utils/arrayContains.js
  * @requires ioc/BeansContext.js
  * @requires ioc/Config.js
  * @requires ioc/Injection.js

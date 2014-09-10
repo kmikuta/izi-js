@@ -5,6 +5,7 @@
  * @requires queue/register.js
  * @requires utils/typeOf.js
  * @requires utils/forEach.js
+ * @requires utils/arrayContains.js
  * @requires ioc/BeansContext.js
  * @requires ioc/Config.js
  * @requires ioc/Injection.js
