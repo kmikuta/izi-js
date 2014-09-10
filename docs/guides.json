@@ -1,0 +1,62 @@
+[
+    {
+        "title": "Basics",
+        "items": [
+            {
+                "name": "basic_ioc",
+                "title": "IoC & DI",
+                "description": "This is an introduction to izi IoC & DI."
+            },
+            {
+                "name": "basic_behavior",
+                "title": "Behaviors",
+                "description": "It shows how to create composition of reusable parts of code called Behaviors"
+            },
+            {
+                "name": "basic_binding",
+                "title": "Data Binding",
+                "description": "Data Binding introduction. Basics of all setup types."
+            },
+            {
+                "name": "basic_queue",
+                "title": "Queue",
+                "description": "Tutorial how to build synchronized queue"
+            },
+            {
+                "name": "model",
+                "title": "Model",
+                "description": "Using built in Model"
+            }
+        ]
+    },
+    {
+        "title": "Advanced",
+        "items": [
+            {
+                "name": "advanced_custom_behavior_observer",
+                "title": "Custom observations of behaviors",
+                "description": "How to extend not regular event dispatcher to be compatible with izi.perform() syntax"
+            },
+            {
+                "name": "advanced_hierarchical_containers",
+                "title": "Hierarchical IoC containers",
+                "description": "Guide which tells how to create hierarchical IoC containers"
+            }
+        ]
+    },
+    {
+        "title": "jQuery implementation",
+        "items": [
+            {
+                "name": "jquery_bindings",
+                "title": "Data Binding",
+                "description": "Using specific bindings in jQuery"
+            },
+            {
+                "name": "jquery_delegated_events",
+                "title": "Delegated events",
+                "description": "Using delegated events with behaviors"
+            }
+        ]
+    }
+]

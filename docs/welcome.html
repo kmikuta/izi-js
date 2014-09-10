@@ -1,0 +1,131 @@
+<div class="class-overview" style="width: 800px; margin: auto;">
+    <div class="x-panel-body">
+        <div class="doc-contents" style="display: block; padding-bottom: 200px;">
+            <h1>What is izi-js?</h1>
+
+            <p>A JavaScript implementation of <a href="http://iziest.bitbucket.org">izi concept</a></p>
+
+            <ul>
+                <li><strong>izi</strong> (as in 'easy') is an MVVM framework.</li>
+                <li><strong>izi</strong> promotes expressive and event driven programming.</li>
+                <li><strong>izi</strong> allows easy code navigation and refactoring.</li>
+            </ul>
+
+            <p>It has been created to eliminate need for any - so called - MVC framework in JavaScript applications.
+                Instead <strong>izi</strong> provides tools that help you implementing some of the best practices,
+                concepts and conventions.
+            </p>
+
+            <h1>What is inside?</h1>
+
+            <p>In the heart of <strong>izi</strong> there is a <strong>dependency injection</strong>. Without it the
+                source is cluttered with a boilerplate code. <strong>izi</strong> has a very simple but powerful bean
+                container implementation that allows building container hierarchies.
+            </p>
+
+            <hr/>
+
+            <p>The spirit of <strong>izi</strong> is comes from <strong>events architecture and composition</strong>.
+                The observer pattern is a base of all the behaviors you should have in your application. Instead of
+                extending components and adding behavior to them <strong>izi</strong> promotes non intrusive extension
+                with use of events and composition of different behaviors to shape the final result.
+            </p>
+
+            <hr/>
+
+            <p><strong>izi</strong> offers also very easy way to define <strong>data bindings</strong> between UI
+                widgets and view model.</p>
+
+            <hr/>
+
+            <h1>JavaScript frameworks support</h1>
+
+            <p><strong>izi</strong> relies on <strong>event-dispatcher</strong> paradigm, but in JavaScript there isn't
+                one common implementation. Each framework (like jQuery UI, ExtJS, Dojo UI) has own interface to manage
+                events. That's why <strong>izi</strong> is easily extensible for new implementations.
+            </p>
+
+            <h1>Installation</h1>
+
+            <pre class="prettyprint"><code><span class="com">&lt;!-- izi core--&gt;</span><span
+                    class="pln">
+</span><span class="tag">&lt;script</span><span class="pln"> </span><span class="atn">type</span><span
+                    class="pun">=</span><span class="atv">"text/javascript"</span><span class="pln"> </span><span
+                    class="atn">src</span><span class="pun">=</span><span class="atv">"izi-js-1.6.0-beta3-SNAPSHOT-min.js"</span><span
+                    class="tag">&gt;&lt;/script&gt;</span><span
+                    class="pln">
+</span><span class="com">&lt;!-- izi framework implementation--&gt;</span><span class="pln">
+</span><span class="tag">&lt;script</span><span class="pln"> </span><span class="atn">type</span><span
+                    class="pun">=</span><span class="atv">"text/javascript"</span><span class="pln"> </span><span
+                    class="atn">src</span><span class="pun">=</span><span class="atv">"izi-js-mootools-1.6.0-beta3-SNAPSHOT-min.js"</span><span
+                    class="tag">&gt;&lt;/script&gt;</span></code></pre>
+
+            <h1><a href="#!/guide/basic_ioc" class="docClass">IoC &amp; DI</a></h1>
+
+            <pre class="prettyprint"><code><span class="pln">izi</span><span
+                    class="pun">.</span><span class="pln">bakeBeans</span><span class="pun">({</span><span class="pln">
+    model</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span
+                    class="pln"> </span><span class="typ">Demo</span><span class="pun">.</span><span
+                    class="pln">model</span><span
+                    class="pun">.</span><span class="typ">SearchModel</span><span class="pun">(),</span><span
+                    class="pln">
+    search</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span
+                    class="pln"> </span><span class="typ">Demo</span><span class="pun">.</span><span
+                    class="pln">behavior</span><span class="pun">.</span><span class="typ">Search</span><span
+                    class="pun">(),</span><span
+                    class="pln">
+    service</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">new</span><span
+                    class="pln"> </span><span class="typ">Demo</span><span class="pun">.</span><span
+                    class="pln">service</span><span
+                    class="pun">.</span><span class="typ">SearchService</span><span class="pun">(),</span><span
+                    class="pln">
+    view</span><span class="pun">:</span><span class="pln"> izi</span><span class="pun">.</span><span class="pln">instantiate</span><span
+                    class="pun">(</span><span class="typ">Demo</span><span class="pun">.</span><span
+                    class="pln">view</span><span
+                    class="pun">.</span><span class="typ">SearchView</span><span class="pun">).</span><span
+                    class="pln">withArgs</span><span class="pun">(</span><span class="pln">izi</span><span
+                    class="pun">.</span><span
+                    class="pln">inject</span><span class="pun">(</span><span class="str">"model"</span><span
+                    class="pun">),</span><span class="pln">
+                                                         izi</span><span class="pun">.</span><span
+                    class="pln">inject</span><span class="pun">(</span><span class="typ">Demo</span><span
+                    class="pun">.</span><span
+                    class="pln">behavior</span><span class="pun">.</span><span class="typ">Search</span><span
+                    class="pun">))</span><span class="pln">
+</span><span class="pun">});</span></code></pre>
+
+            <p><a href="#!/guide/basic_ioc" class="docClass">more about <strong>IoC &amp; DI</strong>...</a></p>
+
+            <h1><a href="#!/guide/basic_behavior" class="docClass">Behaviors</a></h1>
+
+            <pre class="prettyprint"><code><span class="pln">izi</span><span
+                    class="pun">.</span><span class="pln">perform</span><span class="pun">(</span><span
+                    class="pln">search</span><span class="pun">).</span><span class="kwd">when</span><span
+                    class="pun">(</span><span class="str">'click'</span><span class="pun">).</span><span
+                    class="pln">on</span><span class="pun">(</span><span class="pln">searchButton</span><span
+                    class="pun">);</span></code></pre>
+
+            <p><a href="#!/guide/basic_behavior" class="docClass">more about <strong>Behaviors</strong>...</a></p>
+
+            <h1><a href="#!/guide/basic_binding" class="docClass">Data Binding</a></h1>
+
+            <pre class="prettyprint"><code><span class="pln">izi</span><span
+                    class="pun">.</span><span class="pln">bind</span><span class="pun">().</span><span
+                    class="pln">valueOf</span><span class="pun">(</span><span class="pln">textField</span><span
+                    class="pun">).</span><span
+                    class="pln">to</span><span class="pun">(</span><span class="pln">model</span><span
+                    class="pun">,</span><span class="pln"> </span><span class="str">"query"</span><span
+                    class="pun">);</span></code></pre>
+            <p><a href="#!/guide/basic_binding" class="docClass">more about <strong>Data Binding...</strong></a></p>
+
+            <h1><a href="#!/guide/basic_queue" class="docClass">Queue</a></h1>
+
+            <pre class="prettyprint"><code><span class="pln">izi</span><span
+                    class="pun">.</span><span class="pln">queue</span><span class="pun">().</span><span
+                    class="pln">execute</span><span class="pun">(</span><span class="pln">task1</span><span
+                    class="pun">,</span><span class="pln">task2</span><span
+                    class="pun">);</span></code></pre>
+            <p><a href="#!/guide/basic_queue" class="docClass">more about <strong>Queue...</strong></a></p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+[
+    {
+        "name": "Fluent API (global 'izi' singleton)",
+        "groups": [
+            {
+                "name": "",
+                "classes": [
+                    "izi"
+                ]
+            }
+        ]
+    },
+    {
+        "name" : "Classes (you shouldn't instantiate them directly)",
+        "groups": [
+            {
+                "name": "IoC & DI",
+                "classes": [
+                    "Izi.ioc.*"
+                ]
+            },
+            {
+                "name": "Binding",
+                "classes": [
+                    "Izi.binding.*"
+                ]
+            },
+            {
+                "name": "Behavior",
+                "classes": [
+                    "Izi.behavior.*"
+                ]
+            },
+            {
+                "name": "Events",
+                "classes": [
+                    "Izi.events.*"
+                ]
+            },
+            {
+                "name": "Model",
+                "classes": [
+                    "Izi.model.*"
+                ]
+            },
+            {
+                "name": "Queue",
+                "classes": [
+                    "Izi.queue.*"
+                ]
+            }
+        ]
+    }
+]
