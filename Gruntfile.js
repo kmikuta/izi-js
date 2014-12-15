@@ -52,10 +52,19 @@ module.exports = function (grunt) {
         'karma:phantomjs'
     ]);
 
-    grunt.registerTask('release', [
+    grunt.registerTask('release-patch', [
         // Just bump version from `0.0.1` to `0.0.2`
         'push-only:patch',
+        'release'
+    ]);
 
+    grunt.registerTask('release-minor', [
+        // Just bump version from `0.1.1` to `0.2.0`
+        'push-only:minor',
+        'release'
+    ]);
+
+    grunt.registerTask('release', [
         // Run build on bumped version
         'default',
         'docs',
