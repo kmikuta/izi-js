@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires isNestedProperty.js
  * @requires TargetFinder.js
  * @requires TargetWriter.js

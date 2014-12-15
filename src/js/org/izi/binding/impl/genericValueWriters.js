@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires createWriter.js
  * @requires ../../utils/capitalize.js
  * @requires ../../utils/typeOf.js

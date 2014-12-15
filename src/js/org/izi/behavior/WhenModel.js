@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires OnModel.js
  */
 !function (module) {

@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires forEach.js
  * @requires ClassNotFound.js
  */

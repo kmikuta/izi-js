@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires WhenWidget.js
  * @requires WhenModel.js
  * @requires ../utils/typeOf.js

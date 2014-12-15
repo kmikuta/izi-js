@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires debug.js
  * @requires behavior/register.js
  * @requires binding/register.js

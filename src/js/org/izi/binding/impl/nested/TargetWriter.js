@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires ../../../utils/findClosure
  */
 !function (module){

@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires indexOf.js
  */
 !function (module) {

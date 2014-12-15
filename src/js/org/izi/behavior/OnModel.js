@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires ../utils/forEach.js
  */
 !function (module) {

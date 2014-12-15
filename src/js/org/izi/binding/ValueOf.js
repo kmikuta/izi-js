@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires Binding.js
  */
 !function (module) {

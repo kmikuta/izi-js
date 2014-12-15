@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires ../../utils/hasOwnProperty.js
  * @requires ../../utils/getClassByName.js
  */

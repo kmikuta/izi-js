@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires ../../Binding.js
  * @requires ../../Config.js
  * @requires ../../../utils/inherit.js

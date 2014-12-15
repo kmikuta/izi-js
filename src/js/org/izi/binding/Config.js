@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires ../utils/mergeObjects.js
  * @requires ../utils/removeItem.js
  */

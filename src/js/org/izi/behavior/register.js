@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires Perform.js
  * @requires Config.js
  * @requires ../utils/forEach.js

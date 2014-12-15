@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires ../utils/typeOf.js
  * @requires ../utils/mergeObjects.js
  * @requires ../utils/forEach.js

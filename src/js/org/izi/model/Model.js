@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires Observable.js
  * @requires ../utils/getterOf.js
  * @requires ../utils/setterOf.js

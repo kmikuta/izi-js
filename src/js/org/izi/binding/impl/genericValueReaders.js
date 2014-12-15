@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires createReader.js
  * @requires ../../utils/getterOf.js
  * @requires ../../utils/typeOf.js

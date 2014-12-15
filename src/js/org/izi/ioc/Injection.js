@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires ../utils/getCallerLineProvider.js
  * @requires ../utils/ClassNotFound.js
  * @requires bean/NoBeanMatched.js

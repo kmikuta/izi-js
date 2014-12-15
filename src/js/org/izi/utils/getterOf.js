@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires capitalize.js
  */
 !function (module) {

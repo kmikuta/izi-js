@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires createInstance.js
  */
 !function (module) {

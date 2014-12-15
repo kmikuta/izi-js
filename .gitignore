@@ -16,7 +16,7 @@ pids
 # see https://npmjs.org/doc/faq.html#Should-I-check-my-node_modules-folder-into-git
 node_modules
 
-docs-out
+dist-docs
 
 webjar/pom.xml
 webjar/target

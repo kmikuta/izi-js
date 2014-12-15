@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires ../model/Observable.js
  * @requires ../utils/inherit.js
  */

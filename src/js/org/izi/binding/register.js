@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires Bind.js
  * @requires Config.js
  *

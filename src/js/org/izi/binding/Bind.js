@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires ValueOf.js
  * @requires Config.js
  * @requires ../utils/getCallerLineProvider.js

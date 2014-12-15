@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires EventConfig.js
  * @requires KeyboardConfig.js
  */

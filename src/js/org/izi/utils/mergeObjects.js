@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires hasOwnProperty.js
  */
 !function (module) {

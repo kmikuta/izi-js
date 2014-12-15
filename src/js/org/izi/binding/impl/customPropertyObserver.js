@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires createObserver.js
  */
 !function(module) {

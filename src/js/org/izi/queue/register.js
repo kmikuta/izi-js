@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires Queue.js
  */
 !function (module) {

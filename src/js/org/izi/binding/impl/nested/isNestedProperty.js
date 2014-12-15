@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires ../../../utils/typeOf.js
  */
 !function (module) {

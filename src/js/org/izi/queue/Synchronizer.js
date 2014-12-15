@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires ../utils/Map.js
  * @requires ../utils/curry.js
  * @requires ../utils/forEach.js

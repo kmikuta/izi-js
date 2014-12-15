@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires NestedWatcher.js
  * @requires isNestedProperty.js
  * @requires ../createReader.js

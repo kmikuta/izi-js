@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires OnWidget.js
  */
 !function (module) {

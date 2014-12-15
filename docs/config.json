@@ -1,10 +1,9 @@
 {
-    "--title": "izi-js-1.6.0-b3",
     "--welcome": "welcome.html",
     "--guides": "guides.json",
     "--": [
         "../src/js/"
     ],
-    "--output": "../docs-out",
+    "--output": "../dist-docs",
     "--tags": "tags"
 }

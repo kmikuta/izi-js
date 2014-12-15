@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires ../utils/curry.js
  */
 !function (module) {

@@ -40,6 +40,10 @@ module.exports = function (grunt) {
         'watch'
     ]);
 
+    grunt.registerTask('docs', [
+        'exec:jsduck'
+    ]);
+
     grunt.registerTask('test', [
         'karma:all'
     ]);
@@ -48,8 +52,22 @@ module.exports = function (grunt) {
         'karma:phantomjs'
     ]);
 
-    grunt.registerTask('deploy', [
-        'default'
+    grunt.registerTask('release', [
+        // Just bump version from `0.0.1` to `0.0.2`
+        'push-only:patch',
+
+        // Run build on bumped version
+        'default',
+        'docs',
+
+        // Create tag, commit and push to remote repo
+        'push-commit',
+
+        // Publish to NPM
+        'push-publish',
+
+        // Convert `webjar/pom.template` to `webjar/pom.xml` and run `mvn clean deploy` in `webjar` directory
+        'maven-deploy'
     ]);
 
     grunt.registerTask('maven-install', [

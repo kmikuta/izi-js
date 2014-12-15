@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * @requires isNestedProperty.js
  * @requires ../createObserver.js
  * @requires ../../../utils/curry.js
