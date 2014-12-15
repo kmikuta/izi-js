@@ -9,6 +9,7 @@ module.exports = function (grunt) {
      * Load DEFAULT configuration for tasks from directory `grunt/*.js`
      */
     var config = require('load-grunt-configs')(grunt, {config: {src: "grunt/*.js"}});
+    config.pkg = grunt.file.readJSON('package.json');
 
     /**
      * Initialize Grunt configuration
@@ -49,6 +50,17 @@ module.exports = function (grunt) {
 
     grunt.registerTask('deploy', [
         'default'
-//        'maven_deploy:deploy-dist'
+    ]);
+
+    grunt.registerTask('maven-install', [
+        'clean:webjar',
+        'copy:pom',
+        'exec:maven-install'
+    ]);
+
+    grunt.registerTask('maven-deploy', [
+        'clean:webjar',
+        'copy:pom',
+        'exec:maven-deploy'
     ]);
 };

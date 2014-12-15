@@ -17,3 +17,6 @@ pids
 node_modules
 
 docs-out
+
+webjar/pom.xml
+webjar/target
