@@ -127,6 +127,9 @@
      * @return {Izi.ioc.Injection}
      */
     Api.prototype.inject = function (beanIdOrType) {
+        if (!beanIdOrType) {
+            throw new Error("Trying to inject invalid empty bean");
+        }
         return new module.ioc.Injection(beanIdOrType);
     };
 

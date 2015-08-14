@@ -4246,6 +4246,7 @@ Izi.isDebug = true;
  * @ignore
  * @requires ../utils/getCallerLineProvider.js
  * @requires ../utils/ClassNotFound.js
+ * @requires ../utils/typeOf.js
  * @requires bean/NoBeanMatched.js
  */
 !function (module) {
@@ -4268,7 +4269,13 @@ Izi.isDebug = true;
      * @return {String}
      */
     Injection.prototype.getBeanNotFoundMessage = function() {
-        return "Bean couldn't be found from injection at line:\n" + this.getCallerLine();
+        var beanName;
+        if (module.utils.typeOf(this.beanIdOrType) === "Function") {
+            beanName = this.beanIdOrType.name || this.beanIdOrType;
+        } else {
+            beanName = this.beanIdOrType;
+        }
+        return "Bean: `" + beanName + "` couldn't be found from injection at line:\n" + this.getCallerLine();
     };
 
     /**
@@ -6689,6 +6696,9 @@ Izi.isDebug = true;
      * @return {Izi.ioc.Injection}
      */
     Api.prototype.inject = function (beanIdOrType) {
+        if (!beanIdOrType) {
+            throw new Error("Trying to inject invalid empty bean");
+        }
         return new module.ioc.Injection(beanIdOrType);
     };
 

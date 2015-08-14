@@ -204,7 +204,7 @@ describe("Dependency Injection", function () {
             context = izi.bakeBeans({
                                         aClass: izi.instantiate(Class).withArgs(izi.inject("not existing bean"))
                                     });
-        }).toThrowContaining("Bean couldn't be found from injection at line:");
+        }).toThrowContaining("Bean: `not existing bean` couldn't be found from injection at line:");
 
     }); // -------------------------------------------------------------------------------------------------------------
 
@@ -213,7 +213,7 @@ describe("Dependency Injection", function () {
 
         // given
         Class = function () {
-            this.classX = izi.inject("not existing bean")
+            this.classX = izi.inject("not existing bean");
         };
 
         // when/then
@@ -221,18 +221,24 @@ describe("Dependency Injection", function () {
             context = izi.bakeBeans({
                                         aClass: izi.instantiate(Class)
                                     });
-        }).toThrowContaining("Bean couldn't be found from injection at line:");
+        }).toThrowContaining("Bean: `not existing bean` couldn't be found from injection at line:");
 
-        if (izi.debug && (
-            window.navigator.userAgent.indexOf("Chrome") > -1 ||
-            window.navigator.userAgent.indexOf("Firefox") > -1)
-            ) {
-            expect(function () {
-                context = izi.bakeBeans({
-                                            aClass: izi.instantiate(Class)
-                                        });
-            }).toThrowContaining("210");
-        }
+    }); // -------------------------------------------------------------------------------------------------------------
+
+    it("Should throw smart error displaying constructor name when injecting not existing bean (by object property)", function () {
+        var Class, context;
+
+        // given
+        Class = function () {
+            this.classX = izi.inject(function NotExistingClass(){});
+        };
+
+        // when/then
+        expect(function () {
+            context = izi.bakeBeans({
+                                        aClass: izi.instantiate(Class)
+                                    });
+        }).toThrowContaining("Bean: `NotExistingClass` couldn't be found from injection at line:");
 
     }); // -------------------------------------------------------------------------------------------------------------
 
@@ -355,6 +361,22 @@ describe("Dependency Injection", function () {
         expect(context.getBean('bean1') instanceof GlobalClass).toBeTruthy();
         expect(context.getBean('bean2') instanceof GlobalClass).toBeTruthy();
         expect(context.getBean('bean3') instanceof GlobalClass).toBeTruthy();
+
+    }); // -------------------------------------------------------------------------------------------------------------
+
+    it("Should throw an error when trying to inject invalid bean", function () {
+
+        expect(function () {
+            izi.inject(null);
+        }).toThrowError("Trying to inject invalid empty bean");
+
+        expect(function () {
+            izi.inject(undefined);
+        }).toThrowError("Trying to inject invalid empty bean");
+
+        expect(function () {
+            izi.inject("");
+        }).toThrowError("Trying to inject invalid empty bean");
 
     }); // -------------------------------------------------------------------------------------------------------------
 });
