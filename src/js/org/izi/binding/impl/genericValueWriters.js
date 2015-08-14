@@ -68,10 +68,7 @@
         }
 
         function writer(fn, scope, value) {
-            try {
-                fn.call(scope, value);
-            } catch (e) {
-            }
+            fn.call(scope, value);
         }
 
         return module.binding.impl.createWriter(matcher, writer);

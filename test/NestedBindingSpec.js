@@ -198,15 +198,6 @@ describe("Nested Binding", function () {
         expect(nestedPlainObject.level1.level2.value).toBe("Joe");
     }); // -------------------------------------------------------------------------------------------------------------
 
-    it("Should bind value to nested plain object using function even when function call fails", function () {
-
-        // given
-        var invalidObject = {noLevel1Property: true};
-
-        // when
-        izi.bind().valueOf(source).to(function (value) {invalidObject.level1.level2.value = value});
-    }); // -------------------------------------------------------------------------------------------------------------
-
     it("Should bind value to replaced nested object in the middle", function () {
 
         // given

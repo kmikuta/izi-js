@@ -276,6 +276,22 @@ describe("Binding", function () {
 
     }); // -------------------------------------------------------------------------------------------------------------
 
+    it("Shouldn't swallow errors when bind to function", function () {
+
+        //given
+        var source = new Model();
+        source.set("firstName", "John");
+        var targetFunction = function (value) {
+            throw new Error("Something went wrong");
+        };
+
+        // when
+        expect(function () {
+            izi.bind().valueOf(source, "firstName").to(targetFunction);
+        }).toThrowError("Something went wrong");
+
+    }); // -------------------------------------------------------------------------------------------------------------
+
     it("Should bind to function with given scope", function () {
 
         //given
