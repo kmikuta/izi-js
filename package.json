@@ -38,7 +38,7 @@
     "grunt-jsduck": "^1.0.1",
     "grunt-karma": "~0.8.3",
     "grunt-preprocessor": "^0.4.0",
-    "grunt-push-release": "^0.1.1",
+    "grunt-push-release": "^0.1.9",
     "karma": "~0.12.16",
     "karma-chrome-launcher": "~0.1.4",
     "karma-coffee-preprocessor": "~0.1.2",
