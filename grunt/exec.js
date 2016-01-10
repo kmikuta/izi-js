@@ -2,7 +2,7 @@ module.exports.tasks = {
     exec: {
         jsduck: {
             cwd: 'docs',
-            command: 'jsduck.exe --config=config.json --title=<%= pkg.name %>-<%= pkg.version %>'
+            command: 'jsduck --config=config.json --title=<%= pkg.name %>-<%= pkg.version %>'
         },
 
         // mvn install

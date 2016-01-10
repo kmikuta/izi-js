@@ -16,9 +16,9 @@ describe("Dependency Injection", function () {
 
         // when
         context = izi.bakeBeans({
-                                    classA: izi.instantiate(ClassA).withArgs(izi.inject(ClassB)),
-                                    classB: izi.instantiate(ClassB)
-                                });
+            classA: izi.instantiate(ClassA).withArgs(izi.inject(ClassB)),
+            classB: izi.instantiate(ClassB)
+        });
 
         // then
         a = context.getBean(ClassA);
@@ -38,9 +38,9 @@ describe("Dependency Injection", function () {
 
         // when
         context = izi.bakeBeans({
-                                    classA: new ClassA(),
-                                    classB: new ClassB()
-                                });
+            classA: new ClassA(),
+            classB: new ClassB()
+        });
 
         // then
         a = context.getBean(ClassA);
@@ -61,9 +61,9 @@ describe("Dependency Injection", function () {
 
         // when
         context = izi.bakeBeans({
-                                    classA: new ClassA(),
-                                    classB: new ClassB()
-                                });
+            classA: new ClassA(),
+            classB: new ClassB()
+        });
 
         // then
         a = context.getBean(ClassA);
@@ -85,9 +85,9 @@ describe("Dependency Injection", function () {
 
         // when
         context = izi.bakeBeans({
-                                    classA: izi.instantiate(ClassA),
-                                    classB: izi.instantiate(ClassB)
-                                });
+            classA: izi.instantiate(ClassA),
+            classB: izi.instantiate(ClassB)
+        });
 
         // then
         a = context.getBean(ClassA);
@@ -109,9 +109,9 @@ describe("Dependency Injection", function () {
 
         // when
         context = izi.bakeBeans({
-                                    classA: izi.lazy(ClassA),
-                                    classB: izi.lazy(ClassB)
-                                });
+            classA: izi.lazy(ClassA),
+            classB: izi.lazy(ClassB)
+        });
 
         // then
         a = context.getBean(ClassA);
@@ -135,10 +135,10 @@ describe("Dependency Injection", function () {
 
         // when
         context = izi.bakeBeans({
-                                    classA: izi.instantiate(ClassA).withArgs(izi.inject(ClassB)),
-                                    classB: new ClassB(),
-                                    classC: izi.protoOf(ClassC)
-                                });
+            classA: izi.instantiate(ClassA).withArgs(izi.inject(ClassB)),
+            classB: new ClassB(),
+            classC: izi.protoOf(ClassC)
+        });
 
         // then
         a = context.getBean(ClassA);
@@ -160,10 +160,10 @@ describe("Dependency Injection", function () {
         // when/then
         try {
             izi.bakeBeans({
-                              a: izi.instantiate(ClassA).withArgs(izi.inject("b")),
-                              b: izi.instantiate(ClassB).withArgs(izi.inject(ClassC)),
-                              c: izi.instantiate(ClassC).withArgs(izi.inject(ClassA))
-                          });
+                a: izi.instantiate(ClassA).withArgs(izi.inject("b")),
+                b: izi.instantiate(ClassB).withArgs(izi.inject(ClassC)),
+                c: izi.instantiate(ClassC).withArgs(izi.inject(ClassA))
+            });
             fail("Exception not thrown");
         } catch (e) {
             expect(e.message).toBe("Circular dependencies found. If it is possible try inject those dependencies by properties instead by arguments.");
@@ -182,9 +182,9 @@ describe("Dependency Injection", function () {
 
         // when
         context = izi.bakeBeans({
-                                    classA: new org.ClassA(),
-                                    classB: new org.ClassB()
-                                });
+            classA: new org.ClassA(),
+            classB: new org.ClassB()
+        });
 
         // then
         a = context.getBean("org.ClassA");
@@ -290,11 +290,11 @@ describe("Dependency Injection", function () {
 
         // when
         izi.bakeBeans({
-                          classC: izi.instantiate(ClassC).withArgs(izi.inject('classD')),
-                          classA: new ClassA(),
-                          classD: new ClassD(),
-                          classB: new ClassB()
-                      });
+            classC: izi.instantiate(ClassC).withArgs(izi.inject('classD')),
+            classA: new ClassA(),
+            classD: new ClassD(),
+            classB: new ClassB()
+        });
 
         // then
         expect(calledIziInit).toEqual(["ClassD", "ClassC", "ClassB", "ClassA"]);
@@ -378,5 +378,63 @@ describe("Dependency Injection", function () {
             izi.inject("");
         }).toThrowError("Trying to inject invalid empty bean");
 
+    }); // -------------------------------------------------------------------------------------------------------------
+
+    it("Should inject by custom dependency injector", function () {
+        var ClassA, ClassB;
+
+        // given
+        ClassA = function () {
+            this.bValue = izi.inject("ClassB").by(function (target, prop, dependency) {
+                target[prop] = dependency.value;
+            });
+        };
+        ClassB = function () {
+            this.value = "ClassB value"
+        };
+
+        // when
+        var ctx = izi.bakeBeans({
+            ClassA: izi.instantiate(ClassA),
+            ClassB: izi.instantiate(ClassB)
+        });
+
+        // then
+        expect(ctx.getBean("ClassA").bValue).toBe("ClassB value");
+    }); // -------------------------------------------------------------------------------------------------------------
+
+    it("Should inject through dependency converter", function () {
+        var ClassA, ClassB;
+
+        // given
+        function takeValue(dependency) {
+            return dependency.value;
+        };
+
+        ClassA = function (argValue, argPropertyValue) {
+            this.argValue = argValue;
+            this.argPropertyValue = argPropertyValue;
+            this.throughValue = izi.inject("ClassB").through(takeValue);
+            this.propertyValue = izi.inject("ClassB").property("value");
+        };
+        ClassB = function () {
+            this.value = "ClassB value"
+        };
+
+        // when
+        var ctx = izi.bakeBeans({
+            ClassA: izi.instantiate(ClassA).withArgs(
+                izi.inject("ClassB").through(takeValue),
+                izi.inject("ClassB").property("value")
+            ),
+            ClassB: izi.instantiate(ClassB)
+        });
+
+        // then
+        var beanA = ctx.getBean("ClassA");
+        expect(beanA.argValue).toBe("ClassB value");
+        expect(beanA.argPropertyValue).toBe("ClassB value");
+        expect(beanA.propertyValue).toBe("ClassB value");
+        expect(beanA.throughValue).toBe("ClassB value");
     }); // -------------------------------------------------------------------------------------------------------------
 });

@@ -17,8 +17,9 @@
         var prop;
         bean.iziInjectingInProgress = true;
         for (prop in bean) {
-            if (bean[prop] && bean[prop].isIziInjection) {
-                bean[prop] = bean[prop].resolveBean(context);
+            var injection = bean[prop];
+            if (injection && injection.isIziInjection) {
+                injection.injector(bean, prop, injection.resolveBean(context));
             }
         }
         delete bean.iziInjectingInProgress;
