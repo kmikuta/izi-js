@@ -5,6 +5,7 @@
  * @requires ../utils/hasOwnProperty.js
  * @requires ../utils/every.js
  * @requires ../model/Observable.js
+ * @requires Config.js
  * @requires bean/BeanBuilder.js
  * @requires bean/InstanceStrategy.js
  * @requires bean/NoBeanMatched.js
@@ -50,6 +51,9 @@
 
                 if (beanConfig instanceof module.ioc.Config) {
                     beanBuilder = new module.ioc.bean.BeanBuilder(beanId, beanConfig.createStrategy(), globals);
+                } else if (module.utils.typeOf(beanConfig) === "Function") {
+                    var config = new module.ioc.Config(beanConfig, module.ioc.bean.SingletonStrategy, globals);
+                    beanBuilder = new module.ioc.bean.BeanBuilder(beanId, config.createStrategy(), globals);
                 } else {
                     beanBuilder = new module.ioc.bean.BeanBuilder(beanId, new module.ioc.bean.InstanceStrategy(beanConfig), globals);
                 }

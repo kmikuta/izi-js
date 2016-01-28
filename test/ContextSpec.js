@@ -85,6 +85,29 @@ describe("Beans Context", function () {
 
     }); // -------------------------------------------------------------------------------------------------------------
 
+    it("Should instantiate singleton when raw constructor is given", function () {
+        var SingletonClass,
+            context,
+            instantiated = 0;
+
+        // given
+        SingletonClass = function () {
+            instantiated = instantiated + 1;
+        };
+
+        // when
+        context = izi.bakeBeans({
+                                    someId: SingletonClass
+                                });
+
+        // then
+        expect(instantiated).toEqual(1);
+        context.getBean("someId");
+        context.getBean("someId");
+        expect(instantiated).toEqual(1);
+
+    }); // -------------------------------------------------------------------------------------------------------------
+
     it("Should not instantiate lazy singleton after context creation", function () {
         var LazySingletonClass,
             context,
