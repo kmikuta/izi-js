@@ -12,12 +12,13 @@ Just use {@link izi#bakeBeans izi.bakeBeans()} method:
 
 <h2>Beans definitions examples</h2>
 <h3>Singleton</h3>
-This kind of bean is initiated only once at the beginning of beans containers lifecycle.
+This kind of bean is initiated only once at the beginning of beans containers lifecycle. There are 3 ways for defining
+singletons in container:
 
     izi.bakeBeans({
-        model: new Demo.model.SearchModel(), // this is equals to: model: izi.instantiate(Demo.model.SearchModel)
-        search: izi.instantiate("Demo.behavior.Search"),
-        view: izi.instantiate(Demo.view.SearchView)
+        model: izi.instantiate(Demo.model.SearchModel),
+        search: Demo.behavior.Search,                     // Since 1.7.0
+        view: new Demo.view.SearchView()
     });
 
 <h3>Lazy Singleton</h3>
@@ -76,6 +77,51 @@ In examples below classes are built using [MooTools framework][1]
         }
     });
 
+<h3>Through convert function:</h3>
+
+Since: 1.7.0
+
+    Demo.behavior.Login = new Class({
+        user: izi.inject("Demo.model.BigModel").trough(function (bigModel) {
+            return bigModel.user;
+        }),
+
+        iziInit: function () {
+            // this.user is ready to use
+        }
+    });
+
+<h3>Inject property of dependency:</h3>
+
+Since: 1.7.0
+
+    Demo.behavior.Login = new Class({
+        user: izi.inject("Demo.model.BigModel").property("user"),
+
+        iziInit: function () {
+            // this.user is ready to use
+        }
+    });
+
+<h3>By custom injector (it doesn't work in constructor arguments injections):</h3>
+
+Since: 1.7.0
+
+    Demo.behavior.Search = new Class({
+        model: izi.inject("Demo.model.SearchModel").by(function (target, prop, dependency) {
+
+            // target - instance of Demo.behavior.Search
+            // prop = "model"
+            // dependency - instance of Demo.model.SearchModel
+
+            target.setModel(dependency);
+        });
+
+        setModel: function (searchModel) {
+            this.model = searchModel;
+            // you may do something else with searchModel here, but keep in mind that other dependencies are not ready yet!
+        }
+    });
 
 <h2>Injecting dependencies as constructor arguments</h2>
 If your javascript class needs some values passed as arguments of constructor - you can use {@link Izi.ioc.Config#withArgs withArgs}
