@@ -32,7 +32,7 @@ for new implementations.
 
 Documentation
 =============
-[izi-js 1.7.0 API](http://iziest.bitbucket.org/izi-js/docs/1.7.0/index.html)
+[izi-js 1.7.1 API](http://iziest.bitbucket.org/izi-js/docs/1.7.1/index.html)
 
 Installation
 ============
@@ -42,7 +42,7 @@ Installation
     <!-- izi framework implementation-->
     <script type="text/javascript" src="izi-js-jquery.js"></script>
 
-[IoC & DI](http://iziest.bitbucket.org/izi-js/docs/1.7.0/index.html#!/guide/basic_ioc)
+[IoC & DI](http://iziest.bitbucket.org/izi-js/docs/1.7.1/index.html#!/guide/basic_ioc)
 =======================================================================================
 
     izi.bakeBeans({
@@ -52,25 +52,25 @@ Installation
         view: izi.instantiate(Demo.view.SearchView).withArgs(izi.inject("model"),
                                                              izi.inject(Demo.behavior.Search))
 
-[more about IoC & DI...](http://iziest.bitbucket.org/izi-js/docs/1.7.0/index.html#!/guide/basic_ioc)
+[more about IoC & DI...](http://iziest.bitbucket.org/izi-js/docs/1.7.1/index.html#!/guide/basic_ioc)
 
-[Behaviors](http://iziest.bitbucket.org/izi-js/docs/1.7.0/index.html#!/guide/basic_behavior)
+[Behaviors](http://iziest.bitbucket.org/izi-js/docs/1.7.1/index.html#!/guide/basic_behavior)
 =============================================================================================
 
     izi.perform(search).when('click').on(searchButton);
 
-[more about Behaviors...](http://iziest.bitbucket.org/izi-js/docs/1.7.0/index.html#!/guide/basic_behavior)
+[more about Behaviors...](http://iziest.bitbucket.org/izi-js/docs/1.7.1/index.html#!/guide/basic_behavior)
 
-[Data Binding](http://iziest.bitbucket.org/izi-js/docs/1.7.0/index.html#!/guide/basic_binding)
+[Data Binding](http://iziest.bitbucket.org/izi-js/docs/1.7.1/index.html#!/guide/basic_binding)
 ==============================================================================================
 
     izi.bind().valueOf(textField).to(model, "query");
 
-[more about Data Binding...](http://iziest.bitbucket.org/izi-js/docs/1.7.0/index.html#!/guide/basic_binding)
+[more about Data Binding...](http://iziest.bitbucket.org/izi-js/docs/1.7.1/index.html#!/guide/basic_binding)
 
-[Queue](http://iziest.bitbucket.org/izi-js/docs/1.7.0/index.html#!/guide/basic_queue)
+[Queue](http://iziest.bitbucket.org/izi-js/docs/1.7.1/index.html#!/guide/basic_queue)
 =====================================================================================
 
     izi.queue().execute(task1,task2);
 
-[more about Queue...](http://iziest.bitbucket.org/izi-js/docs/1.7.0/index.html#!/guide/basic_queue)
+[more about Queue...](http://iziest.bitbucket.org/izi-js/docs/1.7.1/index.html#!/guide/basic_queue)
