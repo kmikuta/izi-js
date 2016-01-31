@@ -4333,6 +4333,7 @@ var izi,
      * @member Izi.ioc.Injection
      * @param {function(target, prop, dependency)} injector function which will be used to inject dependency as property.
      * @return {Izi.ioc.Injection}
+     * @since 1.7.0
      */
     Injection.prototype.by = function (injector) {
         if (module.utils.typeOf(injector) !== "Function") {
@@ -4358,6 +4359,7 @@ var izi,
      * @member Izi.ioc.Injection
      * @param {function(dependency):*} dependencyConverter function which will be used to inject dependency as property.
      * @return {Izi.ioc.Injection}
+     * @since 1.7.0
      */
     Injection.prototype.through = function (dependencyConverter) {
         if (module.utils.typeOf(dependencyConverter) !== "Function") {
@@ -4373,7 +4375,9 @@ var izi,
      *     firstName: izi.inject("userModel").property("firstName")
      *
      * @param {String} property
-     * @returns {Izi.ioc.Injection}
+     * @return {Izi.ioc.Injection}
+     * @since 1.7.0
+     * @chainable
      */
     Injection.prototype.property = function (property) {
         return this.through(function (dependency) {
