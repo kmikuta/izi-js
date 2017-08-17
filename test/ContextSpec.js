@@ -375,6 +375,30 @@ describe("Beans Context", function () {
         expect(wasDestroyed).toBeTruthy();
     }); // -------------------------------------------------------------------------------------------------------------
 
+    it("Should detach bean wired by context.wire() method", function () {
+
+        // given
+        var wasDestroyed = false;
+        var context = izi.bakeBeans({
+                                        bean: "Bean value"
+                                    });
+        var externalObject = {
+            dependency: izi.inject("bean"),
+            iziDestroy: function () {
+                wasDestroyed = true;
+            }
+        };
+        context.wire(externalObject);
+
+        // when
+        context.detachBean(externalObject);
+
+        // then
+        expect(externalObject.dependency).toBe("Bean value");
+
+        expect(wasDestroyed).toBeTruthy();
+    }); // -------------------------------------------------------------------------------------------------------------
+
     it("Should destroy context and call iziDestroy() on each created bean", function () {
 
         // given

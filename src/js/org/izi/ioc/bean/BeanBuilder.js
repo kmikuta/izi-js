@@ -1,6 +1,7 @@
 /**
  * @ignore
  * @requires ../../utils/forEach.js
+ * @requires ../../utils/some.js
  * @requires ../../utils/getClassByName.js
  */
 !function (module) {
@@ -127,6 +128,19 @@
         } else {
             return matchesByType(this.strategy, idOrType);
         }
+    };
+
+    /**
+     * Matches whether bean has been created by this bean builder
+     * @member Izi.ioc.bean.BeanBuilder
+     * @private
+     * @param {Object} bean
+     * @return {Boolean}
+     */
+    BeanBuilder.prototype.matchesBeanInstance = function (bean) {
+        return module.utils.some(this.createdBeans || [], function (createdBean) {
+            return createdBean === bean;
+        });
     };
 
     /**

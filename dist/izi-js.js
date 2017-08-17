@@ -3698,6 +3698,7 @@ var izi,
 /**
  * @ignore
  * @requires ../../utils/forEach.js
+ * @requires ../../utils/some.js
  * @requires ../../utils/getClassByName.js
  */
 !function (module) {
@@ -3827,6 +3828,19 @@ var izi,
     };
 
     /**
+     * Matches whether bean has been created by this bean builder
+     * @member Izi.ioc.bean.BeanBuilder
+     * @private
+     * @param {Object} bean
+     * @return {Boolean}
+     */
+    BeanBuilder.prototype.matchesBeanInstance = function (bean) {
+        return module.utils.some(this.createdBeans || [], function (createdBean) {
+            return createdBean === bean;
+        });
+    };
+
+    /**
      * Get bean factories that are set as argument dependencies
      * @member Izi.ioc.bean.BeanBuilder
      * @private
@@ -3896,6 +3910,7 @@ var izi,
  * @requires ../utils/forEach.js
  * @requires ../utils/hasOwnProperty.js
  * @requires ../utils/every.js
+ * @requires ../utils/removeItem.js
  * @requires ../model/Observable.js
  * @requires Config.js
  * @requires bean/BeanBuilder.js
@@ -4131,6 +4146,28 @@ var izi,
             beanBuilder = new module.ioc.bean.BeanBuilder("", strategy, this.globals);
         this.beansBuilders.push(beanBuilder);
         return beanBuilder.create(this);
+    };
+
+    /**
+     * Detaches bean wired by context.wire() to prevent memory leaks.
+     * @member Izi.ioc.BeansContext
+     * @since 1.7.2
+     * @param {Object} bean
+     */
+    BeansContext.prototype.detachBean = function (bean) {
+        var beanBuilderToDestroy = null;
+        module.utils.some(this.beansBuilders || [], function (beanBuilder) {
+            if (beanBuilder.matchesBeanInstance(bean)) {
+                beanBuilderToDestroy = beanBuilder;
+                return true;
+            }
+            return false;
+        });
+
+        if (beanBuilderToDestroy) {
+            beanBuilderToDestroy.destroyCreatedBeans();
+            module.utils.removeItem(this.beansBuilders, beanBuilderToDestroy);
+        }
     };
 
     /**
