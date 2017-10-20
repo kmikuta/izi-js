@@ -437,4 +437,33 @@ describe("Dependency Injection", function () {
         expect(beanA.propertyValue).toBe("ClassB value");
         expect(beanA.throughValue).toBe("ClassB value");
     }); // -------------------------------------------------------------------------------------------------------------
+	
+    it("Should inject property with default value", function () {
+        var ClassA, ClassB;
+
+        // given
+        ClassA = function () {
+            this.propA = izi.inject("ClassB").property("propA", "defaultA");
+            this.propB = izi.inject("ClassB").property("propB", "defaultB");
+            this.propC = izi.inject("ClassB").property("propC", "defaultC");
+            this.propD = izi.inject("ClassB").property("propD");
+        };
+        ClassB = function () {
+            this.propA = "propA",
+            this.propB =  null
+        };
+
+        // when
+        var ctx = izi.bakeBeans({
+            ClassA: izi.instantiate(ClassA),
+            ClassB: izi.instantiate(ClassB)
+        });
+
+        // then
+        var beanA = ctx.getBean("ClassA");
+        expect(beanA.propA).toBe("propA");
+        expect(beanA.propB).toBe(null);
+        expect(beanA.propC).toBe("defaultC");
+        expect(beanA.propD).toBe(undefined);
+    }); // -------------------------------------------------------------------------------------------------------------
 });
