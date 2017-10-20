@@ -1,6 +1,6 @@
 {
   "name": "izi-js",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "description": "izi (as in 'easy') is a client side microframework based on several concepts from MVC, MVP and MVVM patterns.",
   "main": "dist/izi-js.min.js",
   "files": [
