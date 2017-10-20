@@ -4412,16 +4412,17 @@ Izi.isDebug = true;
     /**
      * Inject value of `dependency[property]` instead of `dependency`
      *
-     *     firstName: izi.inject("userModel").property("firstName")
+     *     firstName: izi.inject("userModel").property("firstName", "John")
      *
      * @param {String} property
+     * @param {Object} [defaultValue] injected when property value is `undefined`
      * @return {Izi.ioc.Injection}
      * @since 1.7.0
      * @chainable
      */
-    Injection.prototype.property = function (property) {
+    Injection.prototype.property = function (property, defaultValue) {
         return this.through(function (dependency) {
-            return dependency[property];
+            return dependency[property] === undefined ? defaultValue : dependency[property];
         });
     };
 
