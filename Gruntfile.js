@@ -17,8 +17,8 @@ module.exports = function (grunt) {
     grunt.initConfig(config);
 
     grunt.registerTask('default', [
-        'dist',
-        'test'
+        'dist'
+        // 'test'
     ]);
 
     grunt.registerTask('dist', [
