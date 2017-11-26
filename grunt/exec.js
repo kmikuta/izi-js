@@ -1,20 +1,14 @@
+const path = require('path')
+const tslint = path.resolve('node_modules', '.bin', 'tslint')
+
 module.exports.tasks = {
-    exec: {
-        jsduck: {
-            cwd: 'docs',
-            command: 'jsduck --config=config.json --title=<%= pkg.name %>-<%= pkg.version %>'
-        },
+  exec: {
+    tslint: {
+      command: tslint + ' -p ./tsconfig.json -c ./tslint.json'
+    },
 
-        // mvn install
-        "maven-install": {
-            cwd: 'webjar',
-            command: 'mvn clean install'
-        },
-
-        // mvn deploy
-        "maven-deploy": {
-            cwd: 'webjar',
-            command: 'mvn clean deploy'
-        }
+    tslintFix: {
+      command: tslint + ' -p ./tsconfig.json -c ./tslint.json --fix'
     }
-};
+  }
+}
