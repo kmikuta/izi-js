@@ -4,6 +4,7 @@ import { Config } from './ioc/Config'
 import { LazySingletonStrategy } from './ioc/bean/LazySingletonStrategy'
 import { Injection } from './ioc/Injection'
 import { BeansContext } from './ioc/BeansContext'
+import * as decorators from './ioc/decorators/index'
 
 /**
  * Creates beans context using passed config. It can be one configuration, like:
@@ -60,3 +61,8 @@ export function inject (beanIdOrType: BeanIdentity): Injection {
   }
   return new Injection(beanIdOrType)
 }
+
+/**
+ * Contains definitions of decorators
+ */
+export { decorators }
