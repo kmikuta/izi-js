@@ -2,7 +2,6 @@ import { BeanIdentity, BeansConfig, ClassConstructor } from './ioc/types';
 import { Config } from './ioc/Config';
 import { Injection } from './ioc/Injection';
 import { BeansContext } from './ioc/BeansContext';
-import * as decorators from './ioc/decorators/index';
 /**
  * Creates beans context using passed config. It can be one configuration, like:
  *
@@ -38,4 +37,7 @@ export declare function lazy(clazz: ClassConstructor | Function): Config;
  * property dependency injection.
  */
 export declare function inject(beanIdOrType: BeanIdentity): Injection;
-export { decorators };
+/**
+ * Contains definitions of decorators
+ */
+export { Destroy, Init, Inject } from './ioc/decorators';

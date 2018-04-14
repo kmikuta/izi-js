@@ -1,1 +1,1 @@
-export declare function init(target: Element, propertyKey: string): void;
+export declare function Init(target: Element, propertyKey: string): void;

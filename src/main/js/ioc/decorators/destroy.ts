@@ -1,6 +1,6 @@
 import _get = require('lodash/get')
 
-export function destroy (target: Element, propertyKey: string) {
+export function Destroy (target: Element, propertyKey: string) {
   Object.defineProperty(target, 'iziDestroy', {
     configurable: true,
     enumerable: true,

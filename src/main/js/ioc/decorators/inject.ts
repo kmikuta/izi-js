@@ -1,7 +1,7 @@
 import { inject as injectBean } from '../../index'
 import { BeanIdentity, DecoratorInjectionConfig } from '../types'
 
-export function inject (beanIdOrType: BeanIdentity, injectionConfig: DecoratorInjectionConfig = {}) {
+export function Inject (beanIdOrType: BeanIdentity, injectionConfig: DecoratorInjectionConfig = {}) {
   return function (target: Element, propertyKey: string) {
     let injection = injectBean(beanIdOrType)
 

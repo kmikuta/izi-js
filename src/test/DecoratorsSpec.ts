@@ -1,17 +1,17 @@
 import * as izi from '../main/js/index'
 import { expect } from 'chai'
 
-const inject = izi.decorators.inject
+const Inject = izi.Inject
 
 describe('Decorators', () => {
   describe('init', () => {
     it('should register decorated method to call on iziInit', () => {
       // given
-      const init = izi.decorators.init
+      const Init = izi.Init
       let initCalled = false
 
       class ClassA {
-        @init
+        @Init
         onInit () {
           this.notifyInitialized()
         }
@@ -34,11 +34,11 @@ describe('Decorators', () => {
   describe('destroy', () => {
     it('should register decorated method to call on iziDestroy', () => {
       // given
-      const destroy = izi.decorators.destroy
+      const Destroy = izi.Destroy
       let destroyCalled = false
 
       class ClassA {
-        @destroy
+        @Destroy
         onDestroy () {
           this.notifyDestroyed()
         }
@@ -68,7 +68,7 @@ describe('Decorators', () => {
       class ClassA {}
 
       class ClassB {
-        @inject(ClassA)
+        @Inject(ClassA)
         classA: ClassA
 
         iziInit () {
@@ -95,7 +95,7 @@ describe('Decorators', () => {
       }
 
       class ClassB {
-        @inject(ClassA, { property: 'name' })
+        @Inject(ClassA, { property: 'name' })
         injectedName: string
 
         iziInit () {
@@ -126,7 +126,7 @@ describe('Decorators', () => {
       }
 
       class ClassB {
-        @inject(ClassA, { through: convertFunction })
+        @Inject(ClassA, { through: convertFunction })
         injectedName: string
 
         iziInit () {
@@ -155,7 +155,7 @@ describe('Decorators', () => {
       }
 
       class ClassB {
-        @inject(ClassA, { by: customInjector })
+        @Inject(ClassA, { by: customInjector })
         injectedName: string
 
         iziInit () {

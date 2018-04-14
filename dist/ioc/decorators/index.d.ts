@@ -1,4 +1,4 @@
-import { init } from './init';
-import { destroy } from './destroy';
-import { inject } from './inject';
-export { init, destroy, inject };
+import { Init } from './init';
+import { Destroy } from './destroy';
+import { Inject } from './inject';
+export { Init, Destroy, Inject };
